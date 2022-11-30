@@ -5,9 +5,7 @@ from core.smoothness import sparc
 class MoCapData:
 
     def __init__(self, datafilepath):
-        #Read .trc file 
-        #This should not be hardcoded
-        #Retrieve this file name from patient .json file
+
         f = open(datafilepath)
         self.data = f.readlines()
         f.close()
@@ -79,8 +77,7 @@ class MoCapData:
         for marker_disp in disp['disp_data']:            
             disp_arr = numpy.asarray(marker_disp[1][idx[0]:idx[1]],dtype=numpy.float32)
             
-#            savgol_dy = signal.savgol_filter(disp_arr,7,1)
-#            savgol_vel_vec = savgol_dy*50
+
             
             gradient_dy = numpy.gradient(disp_arr)
             dx = numpy.gradient(numpy.asarray(self.get_frametime()[idx[0]:idx[1]]))
@@ -88,13 +85,7 @@ class MoCapData:
             gradient_vel_vec = gradient_dy*50
             vel_data.append(gradient_vel_vec.tolist())
             
-#            ##############FOR DEBUGGING PURPOSES###############
-#            print("savgol coeffs")
-#            print(signal.savgol_coeffs(5,0))
-#            diff =savgol_vel_vec-gradient_vel_vec
-#            print("diff between methods")
-#            print(numpy.sqrt(diff.dot(diff)))
-#            ##############FOR DEBUGGING PURPOSES###############
+
         
         d = {
             "vel_data":vel_data,

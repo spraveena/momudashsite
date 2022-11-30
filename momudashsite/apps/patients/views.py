@@ -107,14 +107,6 @@ def leaderboard(request):
         "leaderboard_list":final_patient_list
     }
         
-#    f= open("static/data/nov_demo/index.json")
-#    leaderboard_patients = json.load(f)   
-#        
-#        
-#    data={
-#        "leaderboard_list":leaderboard_patients
-#    }    
-    
         
     return JsonResponse(data)
         

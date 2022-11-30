@@ -16,8 +16,6 @@ class Audio:
         lines = f.readlines()
         audio_beats=[]
         
-#        for line in lines:
-#            audio_beats.append(float(line.strip()))
 
         audio_beats = [float(lines[x].strip()) for x in range(0,len(lines),self.beat_interval)]
         

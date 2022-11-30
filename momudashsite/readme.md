@@ -5,8 +5,7 @@ Setting up Environment
 > pip install virtualenv
 
 2. Create virtual environment in command prompt 
-(I've used the folder name momuwebapp here but you could change it to anything you like). 
-Note: The virtual environment does not need to be in the same directory as the project folder
+
 
 > virtualenv momuwebapp
 
@@ -31,4 +30,4 @@ Once virtual environment is activated, we should be able to see a (<environment_
 > pip install -r requirements.txt
 
 6. Run webtool with following command:
-> python manage.py runserver
+> python3 manage.py runserver

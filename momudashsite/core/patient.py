@@ -11,15 +11,11 @@ class Patient:
     # def __init__(self, patient_id):
     def __init__(self, datafilepath):
         
-        # self.patient, self.created =  mPatient.objects.get_or_create(patient_id = patient_id)
 
-
-        # print(f"Patient ID:{patient_id} ")
-        # datafilepath = "static/data/MovementData/"+patient_id+"/"+patient_id+".json"
         f = open(datafilepath)
         self.patient_data = json.load(f)
         self.session_list = self.patient_data['session_list']
-        # self.create_session_object(self.session_list)
+
 
         f.close()
         
@@ -30,7 +26,6 @@ class Patient:
     def create_session_object(self,session_list):
         for session in self.session_list:
             sess = self.get_session_summary(session)
-            # sess = Session.objects.get_or_create(session_id = sess['session_id'],session_time = sess['time'],session_score = sess['average_score'], session_mean_vel =  sess['mean_velocity'], session_autocorr_score = sess['autocorr_score'], patient = self.patient )
 
 
 
@@ -124,9 +119,9 @@ class Patient:
         mean_vel = list()
         autocorr_scores = list()
         
-        #for debugging purposes#
+
         audio_tracks = list()
-        #for debugging purposes#
+
         if(self.get_num_valid_trials(session) > 0):          
             
             sess['session_id'] = session['session_id']
@@ -139,18 +134,13 @@ class Patient:
             print("session mean vel")
             print(sess['mean_velocity'])
             
-#            sess['average_smoothness'] = self.get_session_smoothness_score(session)
-#            print("session averag smoothness:")
-#            print(sess['average_smoothness'])
+
             
             sess['autocorr_score'] = self.get_session_autocorr_score(session)
             print("Session autocorr score: ")
             print(sess['autocorr_score'])
             
-#            #for debugging purposes#
-#            sess['audio_tracks'] = audio_tracks
-#            #for debugging purposes#
-#            
+          
             
             
             
